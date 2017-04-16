@@ -1,6 +1,6 @@
 {
   "name": "react-material-components-web",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React version of material-components-web",
   "main": "index.js",
   "scripts": {
