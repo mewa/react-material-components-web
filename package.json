@@ -1,0 +1,38 @@
+{
+  "name": "react-material-components-web",
+  "version": "0.0.1",
+  "description": "React version of material-components-web",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mewa/react-material-components-web.git"
+  },
+  "keywords": [
+    "react",
+    "material",
+    "components"
+  ],
+  "author": "mewa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mewa/react-material-components-web/issues"
+  },
+  "homepage": "https://github.com/mewa/react-material-components-web#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^6.4.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "material-components-web": "^0.8.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
+}
