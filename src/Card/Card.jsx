@@ -30,7 +30,6 @@ export default class Card extends React.Component {
 		break;
 	    case Card.Action:
 		this.actions.push(child);
-		this.actions.push(child);
 		break;
 	    default:
 		this.content.push(child);
@@ -39,6 +38,9 @@ export default class Card extends React.Component {
     }
     render() {
 	let p = {...this.props};
+	if (p.media) {
+	    p.style = { background: "url(" + p.media + ")"}
+	}
 	delete p.dark;
 	return (
 	    <div className={this.classes} {...p}>
