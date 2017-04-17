@@ -9,52 +9,44 @@ describe("<Card />", () => {
 	const wrapper = shallow(<Card />);
 	expect(wrapper.at(0).props().className.split(" ")).toContain("mdc-card");
     });
+
+    it("should have root element with mdc-card class and custom classes", () => {
+	const custom = "custom-classname";
+	const wrapper = shallow(<Card className={custom}/>);
+	expect(wrapper.at(0).props().className.split(" "))
+	    .toEqual(expect.arrayContaining(["mdc-card", custom]));
+    });
 });
 
 describe("<Card /> (sub)title", () => {    
-    it("should render primary section when title is present", () => {
-	const wrapper = shallow(
+    it("should render title", () => {
+	const title = "Super title";
+	const wrapper = mount(
 	    <Card>
-	    <Card.Title>Super title</Card.Title>
-	    Super content
+		<Card.Title>{title}</Card.Title>
+		<Card.Content>
+		  Super content
+		</Card.Content>
 	    </Card>
 	);
-	expect(wrapper.find('section').first().props().className.split(" "))
-	    .toContain("mdc-card__primary");
+	expect(wrapper.find('.mdc-card__title').text())
+	    .toBe(title);
     });
 
-    it("should render primary section when subtitle is present", () => {
-	const wrapper = shallow(
+    it("should render subtitle", () => {
+	const title = "Super subtitle";
+	const wrapper = mount(
 	    <Card>
-	    <Card.Subtitle>Super subtitle</Card.Subtitle>
-	    Super content
+		<Card.Subtitle>{title}</Card.Subtitle>
+		<Card.Content>
+		  Super content
+		</Card.Content>
 	    </Card>
 	);
-	expect(wrapper.find('section').first().props().className.split(" "))
-	    .toContain("mdc-card__primary");
+	expect(wrapper.find('.mdc-card__subtitle').text())
+	    .toBe(title);
     });
     
-    it("should render primary section when title and subtitle is present", () => {
-	const wrapper = shallow(
-	    <Card>
-	    <Card.Subtitle>Super subtitle</Card.Subtitle>
-	    <Card.Title>Super title</Card.Title>
-	    Super content
-	    </Card>
-	);
-	expect(wrapper.find('section').first().props().className.split(" "))
-	    .toContain("mdc-card__primary");
-    });
-
-    it("should NOT render primary section when neither title nor subtitle is present", () => {
-	const wrapper = shallow(
-	    <Card>
-	    Super content
-	    </Card>
-	);
-	expect(wrapper.find('section.mdc-card__primary').exists()).toBe(false);
-    });
-
     it("should render large title", () => {
 	const wrapper = shallow(
 	    <Card.Title large>Super title</Card.Title>
@@ -66,14 +58,27 @@ describe("<Card /> (sub)title", () => {
 
 describe("<Card /> content", () => {
     it("should render content", () => {
+	const content = "Super content";
 	const wrapper = mount(
 	    <Card>
 	    <Card.Title>Super title</Card.Title>
-	    Super content
+	    <Card.Content>
+	      {content}
+	    </Card.Content>
 	    </Card>
 	);
-	expect(wrapper.find('section').at(1).props().className.split(" "))
-	    .toContain("mdc-card__supporting-text");
+	expect(wrapper.find('section.mdc-card__supporting-text').text())
+	    .toEqual(content);
+    });
+    
+    it("should not render empty content", () => {
+	const wrapper = mount(
+	    <Card>
+	    <Card.Title>Super title</Card.Title>
+	    </Card>
+	);
+	expect(wrapper.find('section.mdc-card__supporting-text').exists())
+	    .toBe(false);
     });
 });
 
@@ -81,16 +86,18 @@ describe("<Card /> actions", () => {
     it("should render actions", () => {
 	const wrapper = mount(
 	    <Card>
-	    <Card.Title>Super title</Card.Title>
-	    <Card.Action>Super Action 1</Card.Action>
-	    Super content
-	    <Card.Action>Super Action 2</Card.Action>
+	      <Card.Header>
+		<Card.Title>Super title</Card.Title>
+	      </Card.Header>
+	      <Card.Action>Super Action 1</Card.Action>
+	      Super content
+	      <Card.Action>Super Action 2</Card.Action>
 	    </Card>
 	);
 	expect(wrapper.find('section').last().props().className.split(" "))
 	    .toContain("mdc-card__actions");
 	expect(wrapper.find('.mdc-card__action').length)
-	    .toBe(2)
+	    .toBe(2);
     });
     
     it("should not render actions unless specified", () => {
@@ -119,14 +126,15 @@ describe("<Card horizontal />", () => {
 
 describe("<Card media />", () => {
     it("should have background image", () => {
-	const wrapper = shallow(
-		<Card media="https://material-components-web.appspot.com/images/16-9.jpg">
+	const wrapper = mount(
+		<Card>
 		<Card.Title>Super title</Card.Title>
-		Super content
+		<Card.Content>Super content</Card.Content>
+		<Card.Media src="https://material-components-web.appspot.com/images/16-9.jpg" />
 	    	<Card.Action>Super Action 1</Card.Action>
 	    </Card>
 	);
-	expect(wrapper.at(0).props().style.background)
+	expect(wrapper.find("section.mdc-card__media").props().style.background)
 	    .toEqual("url(https://material-components-web.appspot.com/images/16-9.jpg)");
     });
 });

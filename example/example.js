@@ -4,30 +4,42 @@ import ReactDOM from 'react-dom';
 
 ReactDOM.render(
     <div>
-      <Card className="demo-card" media="https://material-components-web.appspot.com/images/16-9.jpg">
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-      </Card>
-      <Card className="demo-card" media="https://material-components-web.appspot.com/images/16-9.jpg">
-	<Card.Title>Title</Card.Title>
-	<Card.Subtitle>Subhead</Card.Subtitle>
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-	<Card.Action>Action 1</Card.Action>
-	<Card.Action>Action 2</Card.Action>
-      </Card>
       <Card className="demo-card" >
-	<Card.Title>Title</Card.Title>
-	<Card.Subtitle>Subhead</Card.Subtitle>
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
-	<Card.Action>Action 1</Card.Action>
-	<Card.Action>Action 2</Card.Action>
+	<Card.Media src="https://material-components-web.appspot.com/images/16-9.jpg" height="12.313rem" />
+	<Card.Content>
+	  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+	</Card.Content>
       </Card>
+      
       <Card className="demo-card" >
-	<Card.Title large>Large title</Card.Title>
-	<Card.Subtitle>Subhead</Card.Subtitle>
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor.
+	<Card.Media src="https://material-components-web.appspot.com/images/16-9.jpg" height="12.313rem" />
+	<Card.Header>
+	  <Card.Title large>Title</Card.Title>
+	  <Card.Subtitle>Subhead</Card.Subtitle>
+	</Card.Header>
 	<Card.Action>Action 1</Card.Action>
 	<Card.Action>Action 2</Card.Action>
       </Card>
+
+      <Card className="demo-card" maxWidth="10.938rem">
+	<Card.Media src="https://material-components-web.appspot.com/images/1-1.jpg" height="10.938rem" >
+	  <Card.Title large>Title</Card.Title>
+	</Card.Media>
+	<Card.Action>Action 1</Card.Action>
+      </Card>
+
+      <Card className="demo-card" >
+	<Card.Header>
+	  <Card.Title large>Title</Card.Title>
+	  <Card.Subtitle>Subhead</Card.Subtitle>
+	</Card.Header>
+	<Card.Content>
+	  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	</Card.Content>
+	<Card.Action>Action 1</Card.Action>
+	<Card.Action>Action 2</Card.Action>
+      </Card>
+
     </div>,
     document.getElementById("cards")
 );

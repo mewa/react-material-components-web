@@ -2,71 +2,66 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
 import classNames from 'classnames';
-import { Title, Subtitle } from "Card/CardPrimary.jsx";
-import { Action, SupportingText } from "Card/CardContent.jsx";
+import { Primary, Title, Subtitle } from "Card/CardPrimary.jsx";
+import { Action, Media, SupportingText } from "Card/CardContent.jsx";
 
-var base = ["mdc-card"]
+var base = ["mdc-card"];
+var baseActions = ["mdc-card__actions"];
 
 export default class Card extends React.Component {
     constructor(props) {
 	super(props);
-	
-	this.classes = classNames(base, {
+
+	this.classes = classNames(base, this.props.className, {
 	    "mdc-card--dark": this.props.dark
 	});
 
-	// Extract possible children
+	this.actionClasses = classNames(baseActions, {
+	    "mdc-card__actions--vertical": this.props.verticalActions
+	});
+	
 	this.actions = [];
-	this.titles = [];
-	this.subtitles = [];
 	this.content = [];
 	React.Children.forEach(this.props.children, (child) => {
 	    switch (child.type) {
-	    case Card.Title:
-		this.titles.push(child);
-		break;
-	    case Card.Subtitle:
-		this.subtitles.push(child);
-		break;
-	    case Card.Action:
-		this.actions.push(child);
+	    case Action:
+		    this.actions.push(child);
 		break;
 	    default:
-		this.content.push(child);
+		    this.content.push(child);
 	    }
 	});
     }
+    
     render() {
-	let p = {...this.props};
-	if (p.media) {
-	    p.style = { background: "url(" + p.media + ")"}
-	}
-	delete p.dark;
+	let { dark, verticalActions, horizontal, className, maxWidth, ...props} = this.props;
 	return (
-	    <div className={this.classes} {...p}>
-	    { (this.titles.length > 0 || this.subtitles.length > 0) &&
-		<section className="mdc-card__primary">
-		{ this.titles[0] }
-		{ this.subtitles[0] }
-		</section>
-	    }
-	    <SupportingText>
-	    { this.content }
-	    </SupportingText>
-	    { this.actions.length > 0 &&
-		<section className="mdc-card__actions">
-		{ this.actions }
-		</section>
-	    }
+	    <div {...props} className={this.classes} style={{maxWidth}}>
+		{this.content}
+		{this.actions.length > 0 &&
+		    <section className={this.actionClasses} >
+		    {this.actions}
+		    </section>
+		}
 	    </div>
-	    );
+	);
     }
 }
 
 Card.propTypes = {
-    dark: PropTypes.bool
+    dark: PropTypes.bool,
+    verticalActions: PropTypes.bool,
+    maxWidth: PropTypes.string
 };
+
+Card.defaultProps = {
+    maxWidth: "21.875rem"
+};
+
 
 Card.Title = Title;
 Card.Subtitle = Subtitle;
 Card.Action = Action;
+Card.Media = Media;
+Card.Content = SupportingText;
+Card.Header = Primary;

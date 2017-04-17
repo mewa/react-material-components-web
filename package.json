@@ -4,9 +4,10 @@
   "description": "React version of material-components-web",
   "main": "index.js",
   "scripts": {
+    "build": "webpack",
     "dev": "webpack --watch",  
-    "test": "jest",
-    "example": "webpack --config example/webpack.config.js"  
+    "test": "jest --verbose",
+    "example": "webpack --config example/webpack.config.js --watch"  
   },
   "repository": {
     "type": "git",
