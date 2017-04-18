@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { MDCRipple } from '@material/ripple';
 
 export default class Button extends React.Component {
     constructor(props) {
@@ -16,12 +17,19 @@ export default class Button extends React.Component {
     }
 
     render() {
-	const { accent, primary, raised, href, compact, dense, className, ...p } = this.props;
+	const { accent, primary, raised, href, compact, dense, ripple, noripple, className, ...p } = this.props;
 	if (href)
-	    return <a href={href} className={this.classes} {...p} />;
+	    return <a href={href} className={this.classes} {...p} ref={ (btn) => {
+		if (!noripple && ripple)
+		    MDCRipple.attachTo(btn);
+	    }} />;
 	else
-	    return <button className={this.classes} {...p} />
+	    return <button className={this.classes} {...p} ref={ (btn) => {
+		if (!noripple && ripple)
+		    MDCRipple.attachTo(btn);
+	    }} />
     }
+
 };
 
 Button.propTypes = {
@@ -29,5 +37,11 @@ Button.propTypes = {
     primary: PropTypes.bool,
     raised: PropTypes.bool,
     compact: PropTypes.bool,
-    dense: PropTypes.bool
+    dense: PropTypes.bool,
+    ripple: PropTypes.bool,
+    noripple: PropTypes.bool
+};
+
+Button.defaultProps = {
+    ripple: true
 };
