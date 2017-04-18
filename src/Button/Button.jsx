@@ -14,6 +14,7 @@ export default class Button extends React.Component {
 	    "mdc-button--compact": this.props.compact,
 	    "mdc-button--dense" : this.props.dense
 	});
+	console.log(this.classes);
     }
 
     render() {

@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import Button from "Button/Button.jsx";
 
 var Actions = (props) => {
     var classes = classNames(["mdc-card__actions"], props.className, {
@@ -11,7 +12,7 @@ var Actions = (props) => {
 }
 
 var Action = (props) => {
-    return <button className="mdc-button mdc-button--compact mdc-card__action" {...props}>{props.children}</button>;
+    return <Button className="mdc-card__action" compact {...props} />
 };
 
 var SupportingText = (props) => {
