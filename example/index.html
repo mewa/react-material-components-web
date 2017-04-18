@@ -9,9 +9,20 @@
         max-width: 21.875rem;
         margin-bottom: 48px;
       }
+      
+      body > section::after {
+        content: ' ';
+        white-space: pre;
+      }
+
+      div > .mdc-button {
+        margin: 16px;
+      }
     </style>
   </head>
   <body class="mdc-typography">
+    <section id="buttons">
+    </section>
     <section id="cards">
     </section>
     <script src="build/example.js"></script>

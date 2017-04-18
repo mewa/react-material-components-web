@@ -1,3 +1,5 @@
 import Card from 'Card/Card.jsx';
+import Button from 'Button/Button.jsx';
 
-module.exports.Card = Card;
+exports.Card = Card;
+exports.Button = Button;
