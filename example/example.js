@@ -40,6 +40,15 @@ ReactDOM.render(
 	<Card.Action>Action 2</Card.Action>
       </Card>
 
+      <Card className="demo-card" horizontal>
+	<Card.Header>
+	  <Card.Title large>Title</Card.Title>
+	  <Card.Subtitle>Subtitle</Card.Subtitle>
+	</Card.Header>
+	<Card.MediaItem src="https://material-components-web.appspot.com/images/1-1.jpg" />
+	<Card.Action>Action 1</Card.Action>
+	<Card.Action>Action 2</Card.Action>
+      </Card>
     </div>,
     document.getElementById("cards")
 );
