@@ -23,10 +23,12 @@ describe("<Card /> (sub)title", () => {
 	const title = "Super title";
 	const wrapper = mount(
 	    <Card>
+	      <Card.Header>
 		<Card.Title>{title}</Card.Title>
-		<Card.Content>
-		  Super content
-		</Card.Content>
+	      </Card.Header>
+	      <Card.Content>
+		Super content
+	      </Card.Content>
 	    </Card>
 	);
 	expect(wrapper.find('.mdc-card__title').text())
@@ -37,10 +39,12 @@ describe("<Card /> (sub)title", () => {
 	const title = "Super subtitle";
 	const wrapper = mount(
 	    <Card>
+	      <Card.Header>
 		<Card.Subtitle>{title}</Card.Subtitle>
-		<Card.Content>
-		  Super content
-		</Card.Content>
+	      </Card.Header>
+	      <Card.Content>
+		Super content
+	      </Card.Content>
 	    </Card>
 	);
 	expect(wrapper.find('.mdc-card__subtitle').text())
@@ -61,10 +65,12 @@ describe("<Card /> content", () => {
 	const content = "Super content";
 	const wrapper = mount(
 	    <Card>
-	    <Card.Title>Super title</Card.Title>
-	    <Card.Content>
-	      {content}
-	    </Card.Content>
+	      <Card.Header>
+		<Card.Title>Super title</Card.Title>
+	      </Card.Header>
+	      <Card.Content>
+		{content}
+	      </Card.Content>
 	    </Card>
 	);
 	expect(wrapper.find('section.mdc-card__supporting-text').text())
@@ -74,7 +80,9 @@ describe("<Card /> content", () => {
     it("should not render empty content", () => {
 	const wrapper = mount(
 	    <Card>
-	    <Card.Title>Super title</Card.Title>
+	      <Card.Header>
+		<Card.Title>Super title</Card.Title>
+	      </Card.Header>
 	    </Card>
 	);
 	expect(wrapper.find('section.mdc-card__supporting-text').exists())
@@ -89,9 +97,13 @@ describe("<Card /> actions", () => {
 	      <Card.Header>
 		<Card.Title>Super title</Card.Title>
 	      </Card.Header>
-	      <Card.Action>Super Action 1</Card.Action>
-	      Super content
-	      <Card.Action>Super Action 2</Card.Action>
+	      <Card.Content>
+		Super content
+	      </Card.Content>
+	      <Card.Actions>
+		<Card.Action>Super Action 1</Card.Action>
+		<Card.Action>Super Action 2</Card.Action>
+	      </Card.Actions>
 	    </Card>
 	);
 	expect(wrapper.find('section').last().props().className.split(" "))
@@ -103,8 +115,12 @@ describe("<Card /> actions", () => {
     it("should not render actions unless specified", () => {
 	const wrapper = shallow(
 	    <Card>
-	    <Card.Title>Super title</Card.Title>
-	    Super content
+	      <Card.Header>
+		<Card.Title>Super title</Card.Title>
+	      </Card.Header>
+	      <Card.Content>
+		Super content
+	      </Card.Content>
 	    </Card>
 	);
 	expect(wrapper.find('section.mdc-card__actions').exists())
@@ -114,24 +130,26 @@ describe("<Card /> actions", () => {
 
 describe("<Card horizontal />", () => {
     it("should stack horizontally", () => {
-	const wrapper = shallow(
-	    <Card horizontal />
+	const wrapper = mount(
+	    <Card.Horizontal />
 	);
-	expect(wrapper.at(0).props().className.split(" "))
-	    .toContain("mdc-card__horizontal-block");
-	expect(wrapper.at(0).props().className.split(" "))
-	    .not.toContain("mdc-card");
+	console.log(wrapper.props().className)
+	expect(wrapper.find(".mdc-card__horizontal-block").exists()).toBe(true);
     });
 });
 
 describe("<Card media />", () => {
     it("should have background image", () => {
 	const wrapper = mount(
-		<Card>
+	    <Card>
+	      <Card.Header>
 		<Card.Title>Super title</Card.Title>
-		<Card.Content>Super content</Card.Content>
-		<Card.Media src="https://material-components-web.appspot.com/images/16-9.jpg" />
-	    	<Card.Action>Super Action 1</Card.Action>
+	      </Card.Header>
+	      <Card.Media src="https://material-components-web.appspot.com/images/16-9.jpg" />
+	      <Card.Content>Super content</Card.Content>
+	      <Card.Actions>
+		<Card.Action>Super Action 1</Card.Action>
+	      </Card.Actions>
 	    </Card>
 	);
 	expect(wrapper.find("section.mdc-card__media").props().style.background)
@@ -140,19 +158,14 @@ describe("<Card media />", () => {
 });
 
 describe("<Card horizontal /> media item", () => {
-    it("should stack horizontally", () => {
+    it("should render image", () => {
 	const url = "https://material-components-web.appspot.com/images/16-9.jpg"
-	const wrapper = shallow(
-		<Card horizontal>
-		<Card.Title>Super title</Card.Title>
-		Super content
-	    	<Card.Action>Super Action 1</Card.Action>
-		<Card.MediaItem src={url} />
-		</Card>
+	const wrapper = mount(
+	    <Card.MediaItem src={url} />
 	);
-	expect(wrapper.find("img.card__media-item").exists())
+	expect(wrapper.find("img.mdc-card__media-item").exists())
 	    .toBe(true);
-	expect(wrapper.find("img.card__media-item").props().src)
+	expect(wrapper.find("img.mdc-card__media-item").props().src)
 	    .toEqual(url);
     });
 });
