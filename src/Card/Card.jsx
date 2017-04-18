@@ -32,11 +32,6 @@ Card.propTypes = {
     maxWidth: PropTypes.string
 };
 
-Card.defaultProps = {
-    maxWidth: "21.875rem"
-};
-
-
 Card.Title = Title;
 Card.Subtitle = Subtitle;
 Card.Action = Action;
