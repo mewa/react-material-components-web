@@ -101,8 +101,9 @@ describe("<Card /> actions", () => {
 		Super content
 	      </Card.Content>
 	      <Card.Actions>
-		<Card.Action>Super Action 1</Card.Action>
-		<Card.Action>Super Action 2</Card.Action>
+		// Ripple cannot be rendered in tests
+		<Card.Action noripple>Super Action 1</Card.Action>
+		<Card.Action noripple>Super Action 2</Card.Action> 
 	      </Card.Actions>
 	    </Card>
 	);
@@ -148,7 +149,8 @@ describe("<Card media />", () => {
 	      <Card.Media src="https://material-components-web.appspot.com/images/16-9.jpg" />
 	      <Card.Content>Super content</Card.Content>
 	      <Card.Actions>
-		<Card.Action>Super Action 1</Card.Action>
+		// Ripple cannot be rendered in tests
+		<Card.Action noripple>Super Action 1</Card.Action>
 	      </Card.Actions>
 	    </Card>
 	);
