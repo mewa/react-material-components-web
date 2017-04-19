@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mewa/react-material-components-web.svg?branch=development)](https://travis-ci.org/mewa/react-material-components-web)
+
 # React Material Components
 
 This project aims to create a React library that exposes an interface to [material-components-web](https://github.com/material-components/material-components-web) implementation.
