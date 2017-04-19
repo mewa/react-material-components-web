@@ -13,6 +13,15 @@ Each release is going to include new components until full coverage is achieved.
 
 The next milestone is [v0.1](https://github.com/mewa/react-material-components-web/milestone/1)
 
+Currently implemented components:
+
+- [x] Button
+- [x] Card
+- [ ] Elevation
+- [ ] Floating Action Button
+- [ ] Textfield
+- [ ] Toolbar
+
 # Contribute
 
 Pull requests are welcome!
