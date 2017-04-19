@@ -102,8 +102,8 @@ describe("<Card /> actions", () => {
 	      </Card.Content>
 	      <Card.Actions>
 		// Ripple cannot be rendered in tests
-		<Card.Action noripple>Super Action 1</Card.Action>
-		<Card.Action noripple>Super Action 2</Card.Action> 
+		<Card.Action>Super Action 1</Card.Action>
+		<Card.Action>Super Action 2</Card.Action> 
 	      </Card.Actions>
 	    </Card>
 	);
@@ -150,7 +150,7 @@ describe("<Card media />", () => {
 	      <Card.Content>Super content</Card.Content>
 	      <Card.Actions>
 		// Ripple cannot be rendered in tests
-		<Card.Action noripple>Super Action 1</Card.Action>
+		<Card.Action>Super Action 1</Card.Action>
 	      </Card.Actions>
 	    </Card>
 	);
