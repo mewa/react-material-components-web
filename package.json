@@ -46,6 +46,7 @@
     "@material/button": "^0.3.3",
     "@material/ripple": "^0.5.1",
     "classnames": "^2.2.5",
+    "immutable": "^3.8.1",
     "material-components-web": "^0.8.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
