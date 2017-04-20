@@ -45,6 +45,7 @@
   "dependencies": {
     "@material/button": "^0.3.3",
     "@material/ripple": "^0.5.1",
+    "@material/textfield": "^0.2.6",
     "classnames": "^2.2.5",
     "immutable": "^3.8.1",
     "material-components-web": "^0.8.0",
